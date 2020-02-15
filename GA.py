@@ -79,7 +79,14 @@ class Population(object):
             if number_to_print != -1 and printed >= number_to_print:
                 return
             
-            
+    def bestIndividual(self):
+        self.sortPopulation()
+        return self.individuals[0] 
+    
+    def bestFitness(self):
+        self.sortPopulation()
+        return self.individuals[0].fitness
+    
     def breedThePopulation(self, generation, mutation_probability = 0.25):
         
         # Whom to breed
@@ -153,15 +160,15 @@ class Population(object):
                     gene.value = gene.pickRandomValue()
             return individual
         
-        print('')
-        print(text)
-        print('First child')
+        #print('')
+        #print(text)
+        #print('First child')
         i3 = mutate(i3)
         i3.calculateFitness()
         
-        print('')
-        print(text)
-        print('Second child')        
+        #print('')
+        #print(text)
+        #print('Second child')        
         i4 = mutate(i4)
         i4.calculateFitness()
 
